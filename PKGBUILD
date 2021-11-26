@@ -7,7 +7,7 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
@@ -16,14 +16,14 @@ url='http://wxglade.sourceforge.net/'
 depends=('python' 'python-wxpython' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
 makedepends=(icoutils gendesk)
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
-        application-x-wxg.xml)
-sha256sums=('dcf1e3bc3e141480ea9fc059739e823f2d7553931fd51ab130b2ef6a8b699ea1'
-            'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
+  application-x-wxg.xml)
+sha256sums=('d4fbb25004b10b248da0d0385261ff84affad2c51abc66b3741c1546b9d25deb'
+  'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" \
-  	--pkgdesc "$pkgdesc" \
-  	--exec "$pkgname %f" \
+    --pkgdesc "$pkgdesc" \
+    --exec "$pkgname %f" \
     --name 'WxGlade' \
     --mimetypes 'application/x-wxg' \
     --categories "Development;GUIDesigner"
