@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
@@ -16,9 +16,12 @@ url='http://wxglade.sourceforge.net/'
 depends=('python' 'python-wxpython' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
 makedepends=(icoutils gendesk)
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
-  application-x-wxg.xml)
+  application-x-wxg.xml
+  wxglade-1.0.3.patch
+)
 sha256sums=('d4fbb25004b10b248da0d0385261ff84affad2c51abc66b3741c1546b9d25deb'
-  'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
+  'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0'
+  'a4207c724622fb51ee4c06c6b0c1a62ea10dc723edb5e0cb67e1b8ed63f60acd')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" \
@@ -29,6 +32,7 @@ prepare() {
     --categories "Development;GUIDesigner"
 
   rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
+  patch --directory="$pkgname-$pkgver" -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 build() {

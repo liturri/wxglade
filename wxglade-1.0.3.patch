@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text wxglade-1.0.3_org/wxglade wxglade-1.0.3/wxglade
+--- wxglade-1.0.3_org/wxglade	2021-10-24 17:13:29.000000000 -0300
++++ wxglade-1.0.3/wxglade	2022-01-09 14:39:03.739572512 -0300
+@@ -38,7 +38,7 @@
+   PYTHON_BIN=$INTERPRETER
+ 
+   # determined current python version
+-  PY_VERSION=$(${PYTHON_BIN} -c 'import sys; print(sys.version[:3])')
++  PY_VERSION=$(${PYTHON_BIN} -c 'import sys; print(".".join(sys.version.split()[0].split(".")[:2]))')
+ 
+   EGG_DIR="wxGlade-${WXG_VERSION}-py${PY_VERSION}.egg"
+ 
